@@ -1,11 +1,13 @@
 const axios = require('axios');
 
+// Chave de uso das APIs.
 const apiKeyFortniteAPI = "52eae22a-3148-498a-a187-150fb89d0f77";
 const apiKeyFortniteAPIIo = "2b444249-94809a2e-b9c247b8-28dffd17";
 
-// TO DO
+// TO DO: Tornar "nameAccount" dinâmico.
 const nameAccount = "RonaldTyvy13";
 
+// Realiza uma requisição GET à API, passando o nome da conta e retornando o ID da conta.
 const idAccount = {
     method: "GET",
     url: `https://fortnite-api.com/v2/stats/br/v2?name=${nameAccount}`,
@@ -14,6 +16,7 @@ const idAccount = {
     }
 };
 
+// Realiza a consulta dos dados vindos da API.
 async function fetchDataIdAccount() {
     try {
         const response = await axios.request(idAccount);
@@ -24,6 +27,7 @@ async function fetchDataIdAccount() {
     }
 }
 
+// Realiza uma requisição GET à API, passando o ID da conta e retornando as estatíticas da conta.
 async function fetchDataStatsAccount(idAccount) {
     const statsAccount = {
         method: "GET",
@@ -43,4 +47,3 @@ async function fetchDataStatsAccount(idAccount) {
 }
 
 fetchDataIdAccount();
-
