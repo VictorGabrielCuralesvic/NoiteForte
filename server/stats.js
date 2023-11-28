@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-const apiKey = "2b444249-94809a2e-b9c247b8-28dffd17";
+const apiKeyFortniteAPI = "52eae22a-3148-498a-a187-150fb89d0f77";
+const apiKeyFortniteAPIIo = "2b444249-94809a2e-b9c247b8-28dffd17";
 
 // TO DO
 const nameAccount = "RonaldTyvy13"
