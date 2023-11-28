@@ -17,7 +17,26 @@ const idAccount = {
 async function fetchDataIdAccount() {
     try {
         const response = await axios.request(idAccount);
-        console.log(response.data.account_id);
+        const responseIdAccount = response.data.data.account.id;
+        fetchDataStatsAccount(responseIdAccount);
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+async function fetchDataStatsAccount(idAccount) {
+    const statsAccount = {
+        method: "GET",
+        url: `https://fortniteapi.io/v1/stats?account=${idAccount}`,
+        headers: {
+            "Authorization": `${apiKeyFortniteAPIIo}`
+        },
+    }
+
+    try {
+        const response = await axios.request(statsAccount);
+        responseStatsAccount = response.data;
+        console.log(responseStatsAccount);
     } catch(error) {
         console.log(error);
     }
