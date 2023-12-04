@@ -4,7 +4,7 @@ const axios = require('axios');
 const apiKeyFortniteAPI = "52eae22a-3148-498a-a187-150fb89d0f77";
 const apiKeyFortniteAPIIo = "2b444249-94809a2e-b9c247b8-28dffd17";
 
-// TO DO: Tornar "nameAccount" dinâmico.
+// TO DO: Tornar "nameAccount" dinâmico. AQUI PEGAR O NICK DO  USUARIO
 const nameAccount = "RonaldTyvy13";
 
 // Realiza uma requisição GET à API, passando o nome da conta e retornando o ID da conta.
