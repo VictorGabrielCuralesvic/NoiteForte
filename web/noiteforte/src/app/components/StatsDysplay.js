@@ -27,13 +27,13 @@ const StatsDisplay = ({ statsData }) => {
       </div>
       <div>
         <h3>Duo</h3>
-        <p>Vitórias: {duo ? duo.wins : 'N/A'}</p>
+        <p>Vitórias: {duo ? duo.placetop1 : 'N/A'}</p>
         <p>Eliminações: {duo ? duo.kills : 'N/A'}</p>
         {/* Adicione mais estatísticas conforme necessário */}
       </div>
       <div>
         <h3>Squad</h3>
-        <p>Vitórias: {squad ? squad.wins : 'N/A'}</p>
+        <p>Vitórias: {squad ? squad.placetop1 : 'N/A'}</p>
         <p>Eliminações: {squad ? squad.kills : 'N/A'}</p>
         {/* Adicione mais estatísticas conforme necessário */}
       </div>
