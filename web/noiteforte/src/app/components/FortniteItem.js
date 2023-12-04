@@ -21,8 +21,15 @@ const FortniteItem = ({ searchTerm }) => {
     setCurrentPackageIndex((prevIndex) => (prevIndex + 1) % items.length);
   };
 
+  const showPreviousPackage = () => {
+    setCurrentPackageIndex((prevIndex) =>
+      prevIndex === 0 ? 0 : prevIndex - 1
+    );
+  };
+
   return (
-    <div>
+    <div className="mt-10">
+      <h1 className="text-xl font-bold mb-2 text-fortnite-text">Shop</h1>
       {items.length > 0 && (
         <div className="border p-4 mb-4 rounded-md bg-[#08BDE6]">
           {/* Renderizar os detalhes do item */}
@@ -88,9 +95,14 @@ const FortniteItem = ({ searchTerm }) => {
       )}
 
       {items.length > 1 && (
+        <div className="flex justify-between mt-4">
+        <button onClick={showPreviousPackage} className="bg-blue-500 text-white px-4 py-2 rounded">
+          Pacote Anterior
+        </button>
         <button onClick={showNextPackage} className="bg-blue-500 text-white px-4 py-2 rounded">
           Próximo Pacote
         </button>
+      </div>
       )}
     </div>
   );
