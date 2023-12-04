@@ -4,26 +4,24 @@ const axios = require('axios');
 const apiKeyFortniteAPI = "52eae22a-3148-498a-a187-150fb89d0f77";
 const apiKeyFortniteAPIIo = "2b444249-94809a2e-b9c247b8-28dffd17";
 
-// TO DO: Tornar "nameAccount" dinâmico.
-const nameAccount = "RonaldTyvy13";
-
-// Realiza uma requisição GET à API, passando o nome da conta e retornando o ID da conta.
-const idAccount = {
-    method: "GET",
-    url: `https://fortnite-api.com/v2/stats/br/v2?name=${nameAccount}`,
-    headers: {
-        "Authorization": `${apiKeyFortniteAPI}`
-    }
-};
-
 // Realiza a consulta dos dados vindos da API.
-async function fetchDataIdAccount() {
+export default async function fetchDataIdAccount(nameAccount) {
+    // Realiza uma requisição GET à API, passando o nome da conta e retornando o ID da conta.
+    console.log();
+    const idAccount = {
+        method: "GET",
+        url: `https://fortnite-api.com/v2/stats/br/v2?name=${nameAccount}`,
+        headers: {
+            "Authorization": `${apiKeyFortniteAPI}`
+        }
+    };
     try {
         const response = await axios.request(idAccount);
         const responseIdAccount = response.data.data.account.id;
-        fetchDataStatsAccount(responseIdAccount);
+        return await fetchDataStatsAccount(responseIdAccount);
     } catch(error) {
         console.log(error);
+        return("Usuário não encontrado!")
     }
 }
 
@@ -36,14 +34,17 @@ async function fetchDataStatsAccount(idAccount) {
             "Authorization": `${apiKeyFortniteAPIIo}`
         },
     }
-
+    
     try {
         const response = await axios.request(statsAccount);
-        responseStatsAccount = response.data;
+        const responseStatsAccount = response.data;
         console.log(responseStatsAccount);
+        console.log("Aquiii")
+        return responseStatsAccount;
     } catch(error) {
         console.log(error);
+        return("Usuário não encontrado!")
     }
 }
 
-fetchDataIdAccount();
+// fetchDataIdAccount("RonaldTyvy13");

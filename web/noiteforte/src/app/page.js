@@ -2,13 +2,27 @@
 "use client";
 import Head from 'next/head';
 import FortniteItem from './components/FortniteItem';
+import FortniteStats from './components/FortniteStats';
 import { useState } from 'react';
+
+import fetchDataIdAccount from '../../../../server/src/stats'
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [playerStats, setPlayerStats] = useState("");
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const statsData = await fetchDataIdAccount(searchTerm);
+      setPlayerStats(statsData);
+    } catch (error) {
+      console.error(error);
+      // Trate o erro conforme necessário (por exemplo, exiba uma mensagem de erro)
+    }
   };
 
   return (
@@ -29,8 +43,12 @@ export default function Home() {
             onChange={handleInputChange}
             className="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-full focus:outline-none focus:border-fortnite-yellow text-black mb-4"
           />
+          <button 
+            onClick={handleSearch}>Search
+          </button>
           <div className="w-full max-w-screen-lg ml-auto mr-auto">
-          <FortniteItem searchTerm={searchTerm} />
+          <FortniteStats playerStats={playerStats} />
+          <FortniteItem />
         </div>
         </div>
         
